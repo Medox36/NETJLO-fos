@@ -1,7 +1,7 @@
 package ch.giuntini.netjlo_fos.threads;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.threads.ThreadCommons;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.threads.ThreadCommons;
 import ch.giuntini.netjlo_fos.connections.client.FileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.packages.FilePartPackage;
@@ -45,9 +45,11 @@ public class FileReceiverThread<S extends BaseSocket, I extends Interpretable>
         while (!stop) {
             try {
                 cycle();
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 break;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
             Thread.onSpinWait();
         }
@@ -55,7 +57,7 @@ public class FileReceiverThread<S extends BaseSocket, I extends Interpretable>
     }
 
     protected void cycle() throws IOException, ClassNotFoundException {
-        final String filename = ((FilePartPackage) ois.readObject()).information;
+        final String filename = ((FilePartPackage) ois.readObject()).getInformation();
         File file = receiveFile(filename, PATH, ois);
         interpreter.interpret(file);
     }
@@ -66,8 +68,8 @@ public class FileReceiverThread<S extends BaseSocket, I extends Interpretable>
         File file = Files.createFile(target).toFile();
         BufferedWriter bw = Files.newBufferedWriter(target);
         FilePartPackage partPackage;
-        while (!(partPackage = ((FilePartPackage) ois.readObject())).EOF) {
-            bw.write(partPackage.information);
+        while (!(partPackage = (FilePartPackage) ois.readObject()).isEOF()) {
+            bw.write(partPackage.getInformation());
         }
         bw.flush();
         bw.close();

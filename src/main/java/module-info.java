@@ -1,5 +1,5 @@
 module NETJLO_fos {
-    requires NETJLO_base;
+    requires NETJLO_core;
 
     exports ch.giuntini.netjlo_fos.connections;
     exports ch.giuntini.netjlo_fos.connections.client;

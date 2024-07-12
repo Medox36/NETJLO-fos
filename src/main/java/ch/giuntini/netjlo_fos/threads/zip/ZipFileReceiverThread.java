@@ -1,6 +1,6 @@
 package ch.giuntini.netjlo_fos.threads.zip;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
 import ch.giuntini.netjlo_fos.connections.client.zip.ZipFileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.packages.FilePartPackage;
@@ -35,8 +35,8 @@ public class ZipFileReceiverThread<S extends BaseSocket, I extends Interpretable
 
     @Override
     protected void cycle() throws IOException, ClassNotFoundException {
-        final String filename = ((FilePartPackage)ois.readObject()).information;
-        final boolean wasDir = Boolean.parseBoolean(((FilePartPackage)ois.readObject()).information);
+        final String filename = ((FilePartPackage)ois.readObject()).getInformation();
+        final boolean wasDir = Boolean.parseBoolean(((FilePartPackage)ois.readObject()).getInformation());
         File file = FileReceiverThread.receiveFile(filename, PATH, ois);
         if (unzipDirs && file.getName().endsWith(".zip")) {
             if (wasDir) {

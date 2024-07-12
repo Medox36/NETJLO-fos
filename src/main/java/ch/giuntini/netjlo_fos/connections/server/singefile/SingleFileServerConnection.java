@@ -1,9 +1,9 @@
 package ch.giuntini.netjlo_fos.connections.server.singefile;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.connections.server.Acceptable;
-import ch.giuntini.netjlo_base.connections.server.sockets.CustomServerSocket;
-import ch.giuntini.netjlo_base.socket.Disconnectable;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.server.Acceptable;
+import ch.giuntini.netjlo_core.connections.server.sockets.BaseServerSocket;
+import ch.giuntini.netjlo_core.socket.Disconnectable;
 import ch.giuntini.netjlo_fos.connections.FileConnectionMode;
 import ch.giuntini.netjlo_fos.connections.client.SingleFileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
@@ -11,7 +11,7 @@ import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import java.io.File;
 import java.io.IOException;
 
-public class SingleFileServerConnection<T extends CustomServerSocket<S>, S extends BaseSocket, I extends Interpretable>
+public class SingleFileServerConnection<T extends BaseServerSocket<S>, S extends BaseSocket, I extends Interpretable>
         implements Acceptable, Disconnectable {
 
     private SingleFileConnection<BaseSocket, I> connection;

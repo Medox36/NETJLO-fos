@@ -1,8 +1,8 @@
 package ch.giuntini.netjlo_fos.connections.client;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.socket.Connectable;
-import ch.giuntini.netjlo_base.socket.Disconnectable;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.socket.Connectable;
+import ch.giuntini.netjlo_core.socket.Disconnectable;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.socket.Send;
 import ch.giuntini.netjlo_fos.threads.FileReceiverThread;

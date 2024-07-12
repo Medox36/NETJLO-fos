@@ -1,6 +1,6 @@
 package ch.giuntini.netjlo_fos.threads.zip;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
 import ch.giuntini.netjlo_fos.connections.client.zip.ZipFileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.packages.FilePartPackage;
@@ -16,7 +16,7 @@ public class ZipFileSenderThread<S extends BaseSocket, I extends Interpretable> 
     private final long zipThreshold;
 
     /**
-     * creates a ZipFileSenderThread with the zipThreshold of half a Gibibyte (in Windows equivalent of Gigabyte)
+     * creates a ZipFileSenderThread with the zipThreshold of half a Gibibyte (in Windows equivalent of a Gigabyte)
      *
      * @param socket
      */

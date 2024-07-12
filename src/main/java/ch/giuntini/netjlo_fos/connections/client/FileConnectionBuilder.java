@@ -1,6 +1,6 @@
 package ch.giuntini.netjlo_fos.connections.client;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 
 import java.lang.reflect.InvocationTargetException;

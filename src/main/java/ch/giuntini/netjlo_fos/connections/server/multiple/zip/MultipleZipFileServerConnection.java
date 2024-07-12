@@ -1,9 +1,9 @@
 package ch.giuntini.netjlo_fos.connections.server.multiple.zip;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.connections.server.Acceptable;
-import ch.giuntini.netjlo_base.connections.server.sockets.CustomServerSocket;
-import ch.giuntini.netjlo_base.socket.Disconnectable;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.server.Acceptable;
+import ch.giuntini.netjlo_core.connections.server.sockets.BaseServerSocket;
+import ch.giuntini.netjlo_core.socket.Disconnectable;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.socket.Send;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultipleZipFileServerConnection
-        <T extends CustomServerSocket<S>, S extends BaseSocket, I extends Interpretable>
+        <T extends BaseServerSocket<S>, S extends BaseSocket, I extends Interpretable>
         implements Acceptable, AutoCloseable, Disconnectable, Send {
 
     private final Class<I> interpreterC;
@@ -86,7 +86,7 @@ public class MultipleZipFileServerConnection
     }
 
     @Override
-    public void sendAll(File file) {
+    public void sendToAll(File file) {
         CONNECTIONS.forEach(spiActiveServerConnection -> spiActiveServerConnection.send(file));
     }
 

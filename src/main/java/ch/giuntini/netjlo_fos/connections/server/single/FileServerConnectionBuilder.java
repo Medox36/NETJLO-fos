@@ -1,14 +1,14 @@
 package ch.giuntini.netjlo_fos.connections.server.single;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.connections.server.sockets.CustomServerSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.server.sockets.BaseServerSocket;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.SocketException;
 
 public class FileServerConnectionBuilder
-        <T extends CustomServerSocket<S>, S extends BaseSocket, I extends Interpretable> {
+        <T extends BaseServerSocket<S>, S extends BaseSocket, I extends Interpretable> {
 
     protected T serverSocket;
     protected Class<T> serverSocketC;

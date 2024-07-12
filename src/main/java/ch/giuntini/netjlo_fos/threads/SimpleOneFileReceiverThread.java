@@ -1,13 +1,13 @@
 package ch.giuntini.netjlo_fos.threads;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
 import ch.giuntini.netjlo_fos.connections.client.FileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 
 import java.io.IOException;
 
-public class SimpleOneFileReceiverThread
-        <S extends BaseSocket, I extends Interpretable> extends FileReceiverThread<S, I> {
+public class SimpleOneFileReceiverThread<S extends BaseSocket, I extends Interpretable>
+        extends FileReceiverThread<S, I> {
 
     public SimpleOneFileReceiverThread(
             FileConnection<S, I> connection,
@@ -21,8 +21,10 @@ public class SimpleOneFileReceiverThread
     public void run() {
         try {
             cycle();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
         try {
             if (!socket.isInputShutdown()) socket.shutdownInput();

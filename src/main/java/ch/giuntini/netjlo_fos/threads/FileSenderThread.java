@@ -1,7 +1,7 @@
 package ch.giuntini.netjlo_fos.threads;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.threads.ThreadCommons;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.threads.ThreadCommons;
 import ch.giuntini.netjlo_fos.connections.client.FileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 import ch.giuntini.netjlo_fos.packages.FilePartPackage;

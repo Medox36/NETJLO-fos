@@ -1,14 +1,14 @@
 package ch.giuntini.netjlo_fos.connections.server.multiple.zip;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
-import ch.giuntini.netjlo_base.connections.server.sockets.CustomServerSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.server.sockets.BaseServerSocket;
 import ch.giuntini.netjlo_fos.connections.client.zip.ZipFileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 
 import java.io.IOException;
 
 public class ActiveZipFileServerConnection
-        <T extends CustomServerSocket<S>, S extends BaseSocket, I extends Interpretable>
+        <T extends BaseServerSocket<S>, S extends BaseSocket, I extends Interpretable>
         extends ZipFileConnection<S, I> {
 
     private final MultipleZipFileServerConnection<T, S, I> parent;

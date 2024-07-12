@@ -1,6 +1,6 @@
 package ch.giuntini.netjlo_fos.threads;
 
-import ch.giuntini.netjlo_base.connections.client.sockets.BaseSocket;
+import ch.giuntini.netjlo_core.connections.client.sockets.BaseSocket;
 import ch.giuntini.netjlo_fos.connections.client.SingleFileConnection;
 import ch.giuntini.netjlo_fos.interpreter.Interpretable;
 
@@ -11,7 +11,7 @@ public class SimpleOneFileSenderThread<S extends BaseSocket, I extends Interpret
     public SimpleOneFileSenderThread(SingleFileConnection<S, I> connection, S socket, File file) {
         super(connection, socket);
         if (file == null || !file.exists() || !file.canRead() || file.isDirectory())
-            throw new IllegalArgumentException("The file to send can't be null, can't not exist can't be unreadable and can't be a directory");
+            throw new IllegalArgumentException("The file to send can't be null, must exist, can't be unreadable and can't be a directory");
 
         connection.send(file);
         close();
